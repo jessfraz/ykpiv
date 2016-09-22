@@ -5,3 +5,9 @@
 Go bindings for ykpiv so you can write Go to interact with your yubikeys.
 The C library lives at
 [yubico/yubico-piv-tool](https://github.com/Yubico/yubico-piv-tool).
+
+## C Libraries Required for Compilation
+
+- libykpiv
+- libcrypto
+- libpcsclite

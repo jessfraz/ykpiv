@@ -23,13 +23,13 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-// WARNING: This file has automatically been generated on Thu, 22 Sep 2016 16:48:47 UTC.
+// WARNING: This file has automatically been generated on Thu, 22 Sep 2016 21:30:57 UTC.
 // By https://git.io/cgogen. DO NOT EDIT.
 
 package ykpiv
 
 /*
-#cgo LDFLAGS: -lykpiv
+#cgo LDFLAGS: -lykpiv -lcrypto -lpcsclite -lpthread
 #include "ykpiv.h"
 #include <stdlib.h>
 #include "cgo_helpers.h"
@@ -57,8 +57,8 @@ func (x *State) Free() {
 }
 
 // NewStateRef converts the C object reference into a raw struct reference without wrapping.
-func NewStateRef(ref *C.ykpiv_state) *State {
-	return (*State)(unsafe.Pointer(ref))
+func NewStateRef(ref unsafe.Pointer) *State {
+	return (*State)(ref)
 }
 
 // NewState allocates a new C object of this type and converts the reference into

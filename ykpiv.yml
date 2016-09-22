@@ -28,7 +28,7 @@ GENERATOR:
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
   Includes: ["ykpiv.h"]
   FlagGroups:
-    - {name: LDFLAGS, flags: [-lykpiv]}
+    - {name: LDFLAGS, flags: [-lykpiv -lcrypto -lpcsclite -lpthread]}
 
 PARSER:
   IncludePaths: ["/usr/include", "/usr/lib", "/usr/src/yubico-piv-tool/lib", "/usr/src/yubico-piv-tool/ykpiv"]
