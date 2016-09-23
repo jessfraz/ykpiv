@@ -23,7 +23,7 @@
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
 
-// WARNING: This file has automatically been generated on Thu, 22 Sep 2016 21:30:57 UTC.
+// WARNING: This file has automatically been generated on Thu, 22 Sep 2016 22:57:19 UTC.
 // By https://git.io/cgogen. DO NOT EDIT.
 
 #include "ykpiv.h"

@@ -8,6 +8,46 @@ The C library lives at
 
 ## C Libraries Required for Compilation
 
-- libykpiv
 - libcrypto
-- libpcsclite
+- [libykpiv](https://github.com/Yubico/yubico-piv-tool/)
+- [libpcsclite](https://pcsclite.alioth.debian.org/pcsclite.html)
+- [ccid](https://pcsclite.alioth.debian.org/ccid.html)
+
+## Example
+
+```go
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/jfrazelle/ykpiv"
+)
+
+func main() {
+	s := ykpiv.NewState()
+	defer s.Free()
+
+	// Let's get the readers
+	readers := make([]byte, 2048)
+	len := []uint{2048}
+	log.Println("list")
+	err := ykpiv.ListReaders([]ykpiv.State{*s}, readers, len)
+	if err != 0 {
+		log.Fatalf("%s: %#v", ykpiv.Strerror(err), err)
+	}
+
+	fmt.Printf("readers: %s\n", string(readers))
+}
+```
+
+## Starting `pcscd`
+
+Hopefully your operating system does this for you with a nice init script but
+if not here you go:
+
+```console
+$ sudo LIBCCID_ifdLogLevel=0x000F /usr/sbin/pcscd --foreground --debug --apdu --color
+$ sudo /usr/sbin/pcscd --hotplug
+```

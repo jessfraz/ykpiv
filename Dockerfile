@@ -20,17 +20,28 @@ RUN	apk add --no-cache \
 	libc-dev \
 	libgcc \
 	libtool \
+	libusb-dev \
 	openssl-dev \
 	pcsc-lite-dev
 
 RUN go get github.com/xlab/cgogen \
 	&& go get github.com/golang/lint/golint
 
-ENV PCSC_VERSION 1.8.9
+#Install pcsclite
 RUN git clone https://alioth.debian.org/anonscm/git/pcsclite/PCSC.git /usr/src/pcsc \
 	&& ( \
 		cd /usr/src/pcsc \
-		&& git checkout "pcsc-${PCSC_VERSION}" \
+		&& ./bootstrap \
+		&& ./configure --prefix=/usr \
+		&& make \
+		&& make install \
+	)
+# Install ccid
+RUN git clone https://alioth.debian.org/anonscm/git/pcsclite/CCID.git /usr/src/ccid \
+	&& ( \
+		cd /usr/src/ccid \
+		&& git submodule init \
+		&& git submodule update \
 		&& ./bootstrap \
 		&& ./configure --prefix=/usr \
 		&& make \
