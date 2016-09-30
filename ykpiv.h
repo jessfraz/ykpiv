@@ -37,78 +37,92 @@
 #include <ykpiv-version.h>
 
 #ifdef __cplusplus
-extern "C"
-{
+extern "C" {
 #endif
 
-  typedef struct ykpiv_state ykpiv_state;
+	typedef struct ykpiv_state ykpiv_state;
 
-  typedef enum {
-    YKPIV_OK = 0,
-    YKPIV_MEMORY_ERROR = -1,
-    YKPIV_PCSC_ERROR = -2,
-    YKPIV_SIZE_ERROR = -3,
-    YKPIV_APPLET_ERROR = -4,
-    YKPIV_AUTHENTICATION_ERROR = -5,
-    YKPIV_RANDOMNESS_ERROR = -6,
-    YKPIV_GENERIC_ERROR = -7,
-    YKPIV_KEY_ERROR = -8,
-    YKPIV_PARSE_ERROR = -9,
-    YKPIV_WRONG_PIN = -10,
-    YKPIV_INVALID_OBJECT = -11,
-    YKPIV_ALGORITHM_ERROR = -12,
-    YKPIV_PIN_LOCKED = -13,
-  } ykpiv_rc;
+	typedef enum {
+		YKPIV_OK = 0,
+		YKPIV_MEMORY_ERROR = -1,
+		YKPIV_PCSC_ERROR = -2,
+		YKPIV_SIZE_ERROR = -3,
+		YKPIV_APPLET_ERROR = -4,
+		YKPIV_AUTHENTICATION_ERROR = -5,
+		YKPIV_RANDOMNESS_ERROR = -6,
+		YKPIV_GENERIC_ERROR = -7,
+		YKPIV_KEY_ERROR = -8,
+		YKPIV_PARSE_ERROR = -9,
+		YKPIV_WRONG_PIN = -10,
+		YKPIV_INVALID_OBJECT = -11,
+		YKPIV_ALGORITHM_ERROR = -12,
+		YKPIV_PIN_LOCKED = -13,
+	} ykpiv_rc;
 
-  const char *ykpiv_strerror(ykpiv_rc err);
-  const char *ykpiv_strerror_name(ykpiv_rc err);
+	const char *ykpiv_strerror(ykpiv_rc err);
+	const char *ykpiv_strerror_name(ykpiv_rc err);
 
-  ykpiv_rc ykpiv_init(ykpiv_state **state, int verbose);
-  ykpiv_rc ykpiv_done(ykpiv_state *state);
-  ykpiv_rc ykpiv_connect(ykpiv_state *state, const char *wanted);
-  ykpiv_rc ykpiv_list_readers(ykpiv_state *state, char *readers, size_t *len);
-  ykpiv_rc ykpiv_disconnect(ykpiv_state *state);
-  ykpiv_rc ykpiv_transfer_data(ykpiv_state *state, const unsigned char *templ,
-                               const unsigned char *in_data, long in_len,
-                               unsigned char *out_data, unsigned long *out_len, int *sw);
-  ykpiv_rc ykpiv_authenticate(ykpiv_state *state, const unsigned char *key);
-  ykpiv_rc ykpiv_set_mgmkey(ykpiv_state *state, const unsigned char *new_key);
-  ykpiv_rc ykpiv_hex_decode(const char *hex_in, size_t in_len,
-                            unsigned char *hex_out, size_t *out_len);
-  ykpiv_rc ykpiv_sign_data(ykpiv_state *state, const unsigned char *sign_in,
-                           size_t in_len, unsigned char *sign_out, size_t *out_len,
-                           unsigned char algorithm, unsigned char key);
-  ykpiv_rc ykpiv_sign_data2(ykpiv_state *state, const unsigned char *sign_in,
-                            size_t in_len, unsigned char *sign_out, size_t *out_len,
-                            unsigned char algorithm, unsigned char key, int padding); // Allow not to add padding
-  ykpiv_rc ykpiv_decipher_data(ykpiv_state *state, const unsigned char *enc_in,
-                               size_t in_len, unsigned char *enc_out, size_t *out_len,
-                               unsigned char algorithm, unsigned char key);
-  ykpiv_rc ykpiv_get_version(ykpiv_state *state, char *version, size_t len);
-  ykpiv_rc ykpiv_verify(ykpiv_state *state, const char *pin, int *tries);
-  ykpiv_rc ykpiv_change_pin(ykpiv_state *state, const char * current_pin, size_t current_pin_len,
-                            const char * new_pin, size_t new_pin_len,
-                            int *tries);
-  ykpiv_rc ykpiv_change_puk(ykpiv_state *state, const char * current_puk, size_t current_puk_len,
-                            const char * new_puk, size_t new_puk_len,
-                            int *tries);
-  ykpiv_rc ykpiv_unblock_pin(ykpiv_state *state, const char * puk, size_t puk_len,
-                             const char * new_pin, size_t new_pin_len,
-                             int *tries);
-  ykpiv_rc ykpiv_fetch_object(ykpiv_state *state, int object_id,
-                              unsigned char *data, unsigned long *len);
-  ykpiv_rc ykpiv_set_mgmkey2(ykpiv_state *state, const unsigned char *new_key,
-      const unsigned char touch);
-  ykpiv_rc ykpiv_save_object(ykpiv_state *state, int object_id,
-                             unsigned char *indata, size_t len);
-  ykpiv_rc ykpiv_import_private_key(ykpiv_state *state, const unsigned char key, unsigned char algorithm,
-                                    const unsigned char *p, size_t p_len,
-                                    const unsigned char *q, size_t q_len,
-                                    const unsigned char *dp, size_t dp_len,
-                                    const unsigned char *dq, size_t dq_len,
-                                    const unsigned char *qinv, size_t qinv_len,
-                                    const unsigned char *ec_data, unsigned char ec_data_len,
-                                    const unsigned char pin_policy, const unsigned char touch_policy);
+	ykpiv_rc ykpiv_init(ykpiv_state ** state, int verbose);
+	ykpiv_rc ykpiv_done(ykpiv_state * state);
+	ykpiv_rc ykpiv_connect(ykpiv_state * state, const char *wanted);
+	ykpiv_rc ykpiv_list_readers(ykpiv_state * state, char *readers,
+				    size_t * len);
+	ykpiv_rc ykpiv_disconnect(ykpiv_state * state);
+	ykpiv_rc ykpiv_transfer_data(ykpiv_state * state,
+				     const unsigned char *templ,
+				     const unsigned char *in_data, long in_len,
+				     unsigned char *out_data,
+				     unsigned long *out_len, int *sw);
+	ykpiv_rc ykpiv_authenticate(ykpiv_state * state,
+				    const unsigned char *key);
+	ykpiv_rc ykpiv_set_mgmkey(ykpiv_state * state,
+				  const unsigned char *new_key);
+	ykpiv_rc ykpiv_hex_decode(const char *hex_in, size_t in_len,
+				  unsigned char *hex_out, size_t * out_len);
+	ykpiv_rc ykpiv_sign_data(ykpiv_state * state,
+				 const unsigned char *sign_in, size_t in_len,
+				 unsigned char *sign_out, size_t * out_len,
+				 unsigned char algorithm, unsigned char key);
+	ykpiv_rc ykpiv_sign_data2(ykpiv_state * state, const unsigned char *sign_in, size_t in_len, unsigned char *sign_out, size_t * out_len, unsigned char algorithm, unsigned char key, int padding);	// Allow not to add padding
+	ykpiv_rc ykpiv_decipher_data(ykpiv_state * state,
+				     const unsigned char *enc_in, size_t in_len,
+				     unsigned char *enc_out, size_t * out_len,
+				     unsigned char algorithm,
+				     unsigned char key);
+	ykpiv_rc ykpiv_get_version(ykpiv_state * state, char *version,
+				   size_t len);
+	ykpiv_rc ykpiv_verify(ykpiv_state * state, const char *pin, int *tries);
+	ykpiv_rc ykpiv_change_pin(ykpiv_state * state, const char *current_pin,
+				  size_t current_pin_len, const char *new_pin,
+				  size_t new_pin_len, int *tries);
+	ykpiv_rc ykpiv_change_puk(ykpiv_state * state, const char *current_puk,
+				  size_t current_puk_len, const char *new_puk,
+				  size_t new_puk_len, int *tries);
+	ykpiv_rc ykpiv_unblock_pin(ykpiv_state * state, const char *puk,
+				   size_t puk_len, const char *new_pin,
+				   size_t new_pin_len, int *tries);
+	ykpiv_rc ykpiv_fetch_object(ykpiv_state * state, int object_id,
+				    unsigned char *data, unsigned long *len);
+	ykpiv_rc ykpiv_set_mgmkey2(ykpiv_state * state,
+				   const unsigned char *new_key,
+				   const unsigned char touch);
+	ykpiv_rc ykpiv_save_object(ykpiv_state * state, int object_id,
+				   unsigned char *indata, size_t len);
+	ykpiv_rc ykpiv_import_private_key(ykpiv_state * state,
+					  const unsigned char key,
+					  unsigned char algorithm,
+					  const unsigned char *p, size_t p_len,
+					  const unsigned char *q, size_t q_len,
+					  const unsigned char *dp,
+					  size_t dp_len,
+					  const unsigned char *dq,
+					  size_t dq_len,
+					  const unsigned char *qinv,
+					  size_t qinv_len,
+					  const unsigned char *ec_data,
+					  unsigned char ec_data_len,
+					  const unsigned char pin_policy,
+					  const unsigned char touch_policy);
 
 #define YKPIV_ALGO_TAG 0x80
 #define YKPIV_ALGO_3DES 0x03
@@ -146,14 +160,14 @@ extern "C"
 
 #define YKPIV_OBJ_CAPABILITY 0x5fc107
 #define YKPIV_OBJ_CHUID 0x5fc102
-#define YKPIV_OBJ_AUTHENTICATION 0x5fc105 /* cert for 9a key */
+#define YKPIV_OBJ_AUTHENTICATION 0x5fc105	/* cert for 9a key */
 #define YKPIV_OBJ_FINGERPRINTS 0x5fc103
 #define YKPIV_OBJ_SECURITY 0x5fc106
 #define YKPIV_OBJ_FACIAL 0x5fc108
 #define YKPIV_OBJ_PRINTED 0x5fc109
-#define YKPIV_OBJ_SIGNATURE 0x5fc10a /* cert for 9c key */
-#define YKPIV_OBJ_KEY_MANAGEMENT 0x5fc10b /* cert for 9d key */
-#define YKPIV_OBJ_CARD_AUTH 0x5fc101 /* cert for 9e key */
+#define YKPIV_OBJ_SIGNATURE 0x5fc10a	/* cert for 9c key */
+#define YKPIV_OBJ_KEY_MANAGEMENT 0x5fc10b	/* cert for 9d key */
+#define YKPIV_OBJ_CARD_AUTH 0x5fc101	/* cert for 9e key */
 #define YKPIV_OBJ_DISCOVERY 0x7e
 #define YKPIV_OBJ_KEY_HISTORY 0x5fc10c
 #define YKPIV_OBJ_IRIS 0x5fc121
@@ -197,7 +211,7 @@ extern "C"
 /* this is a custom sw for yubikey */
 #define SW_ERR_INCORRECT_SLOT 0x6b00
 
-  /* Yubico vendor specific instructions */
+	/* Yubico vendor specific instructions */
 #define YKPIV_INS_SET_MGMKEY 0xff
 #define YKPIV_INS_IMPORT_KEY 0xfe
 #define YKPIV_INS_GET_VERSION 0xfd
@@ -223,5 +237,4 @@ extern "C"
 #ifdef __cplusplus
 }
 #endif
-
 #endif

@@ -60,5 +60,5 @@ RUN git clone --depth 1 -b "yubico-piv-tool-${YKPIV_VERSION}" \
 	)
 
 ENV PKG_CONFIG_PATH /usr/lib/pkgconfig:/usr/src/yubico-piv-tool/ykpiv
-COPY . /go/src/github.com/jfrazelle/ykpiv
-WORKDIR /go/src/github.com/jfrazelle/ykpiv
+COPY . /go/src/github.com/jessfraz/ykpiv
+WORKDIR /go/src/github.com/jessfraz/ykpiv

@@ -1,6 +1,6 @@
 # ykpiv
 
-[![GoDoc](https://godoc.org/github.com/jfrazelle/ykpiv?status.svg)](https://godoc.org/github.com/jfrazelle/ykpiv) [![Travis CI](https://travis-ci.org/jfrazelle/ykpiv.svg?branch=master)](https://travis-ci.org/jfrazelle/ykpiv)
+[![GoDoc](https://godoc.org/github.com/jessfraz/ykpiv?status.svg)](https://godoc.org/github.com/jessfraz/ykpiv) [![Travis CI](https://travis-ci.org/jessfraz/ykpiv.svg?branch=master)](https://travis-ci.org/jessfraz/ykpiv)
 
 Go bindings for ykpiv so you can write Go to interact with your yubikeys.
 The C library lives at
@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/jfrazelle/ykpiv"
+	"github.com/jessfraz/ykpiv"
 )
 
 func main() {
