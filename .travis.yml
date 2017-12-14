@@ -17,7 +17,6 @@
     - go get github.com/golang/lint/golint
     - go get honnef.co/go/tools/cmd/staticcheck
   script:
-    - go build -v
     - staticcheck $(go list ./... | grep -v vendor)
     - test -z "$(gofmt -s -l . | grep -v vendor | tee /dev/stderr)"
     - make dtest
