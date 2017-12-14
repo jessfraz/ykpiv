@@ -32,7 +32,7 @@ RUN git clone https://alioth.debian.org/anonscm/git/pcsclite/PCSC.git /usr/src/p
 	&& ( \
 		cd /usr/src/pcsc \
 		&& ./bootstrap \
-		&& ./configure --prefix=/usr \
+		&& ./configure --prefix=/usr --disable-libsystemd \
 		&& make \
 		&& make install \
 	)
