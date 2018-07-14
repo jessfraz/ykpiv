@@ -1,22 +1,16 @@
----
-  language: go
-  sudo: true
-  notifications:
-    email: true
-  go:
-    - 1.7.x
-    - 1.8.x
-    - 1.9.x
-    - tip
-  services:
-    - docker
-  env:
-    global:
-      - GO15VENDOREXPERIMENT=1
-  install:
-    - go get github.com/golang/lint/golint
-    - go get honnef.co/go/tools/cmd/staticcheck
-  script:
-    - staticcheck $(go list ./... | grep -v vendor)
-    - test -z "$(gofmt -s -l . | grep -v vendor | tee /dev/stderr)"
-    - make dtest
+language: go
+sudo: true
+services:
+  - docker
+go:
+  - 1.10.x
+before_install:
+  - go get github.com/golang/lint/golint
+  - go get honnef.co/go/tools/cmd/staticcheck
+jobs:
+  include:
+    - script:
+      - make fmt lint staticcheck vet
+    - stage: Run Test Coverage
+      script: make cover
+      after_success: bash <(curl -s https://codecov.io/bash)

@@ -28,7 +28,7 @@ RUN go get github.com/xlab/cgogen \
 	&& go get github.com/golang/lint/golint
 
 #Install pcsclite
-RUN git clone https://alioth.debian.org/anonscm/git/pcsclite/PCSC.git /usr/src/pcsc \
+RUN git clone https://github.com/LudovicRousseau/PCSC.git /usr/src/pcsc \
 	&& ( \
 		cd /usr/src/pcsc \
 		&& ./bootstrap \
@@ -36,8 +36,9 @@ RUN git clone https://alioth.debian.org/anonscm/git/pcsclite/PCSC.git /usr/src/p
 		&& make \
 		&& make install \
 	)
+
 # Install ccid
-RUN git clone https://alioth.debian.org/anonscm/git/pcsclite/CCID.git /usr/src/ccid \
+RUN git clone https://github.com/LudovicRousseau/CCID.git /usr/src/ccid \
 	&& ( \
 		cd /usr/src/ccid \
 		&& git submodule init \
