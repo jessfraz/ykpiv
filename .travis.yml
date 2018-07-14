@@ -11,6 +11,4 @@ jobs:
   include:
     - script:
       - make fmt lint staticcheck vet
-    - stage: Run Test Coverage
-      script: make cover
-      after_success: bash <(curl -s https://codecov.io/bash)
+      - make dtest

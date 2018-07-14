@@ -165,7 +165,7 @@ dbuild: ## Build the test docker image
 generate: dbuild ## Generate the cgo files
 	@echo "+ $@"
 	@$(DOCKER_FLAGS) \
-		--name ykpiv \
+		--name $(NAME) \
 		--disable-content-trust \
 		$(DOCKER_IMAGE) hack/generate.sh
 
@@ -173,7 +173,7 @@ generate: dbuild ## Generate the cgo files
 dtest: dbuild ## Run the tests in a docker image
 	@echo "+ $@"
 	@$(DOCKER_FLAGS) \
-		--name ykpiv \
+		--name $(NAME) \
 		--disable-content-trust \
 		$(DOCKER_IMAGE) make build test
 
