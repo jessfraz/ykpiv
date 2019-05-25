@@ -25,7 +25,7 @@ RUN	apk add --no-cache \
 	pcsc-lite-dev
 
 RUN go get github.com/xlab/cgogen \
-	&& go get github.com/golang/lint/golint
+	&& go get golang.org/x/lint/golint
 
 #Install pcsclite
 RUN git clone https://github.com/LudovicRousseau/PCSC.git /usr/src/pcsc \
