@@ -10,6 +10,7 @@ RUN	apk add --no-cache \
 	bash \
 	build-base \
 	ca-certificates \
+	check-dev \
 	file \
 	flex \
 	gengetopt \
@@ -49,7 +50,7 @@ RUN git clone https://github.com/LudovicRousseau/CCID.git /usr/src/ccid \
 		&& make install \
 	)
 
-ENV YKPIV_VERSION 1.4.2
+ENV YKPIV_VERSION 1.7.0
 RUN git clone --depth 1 -b "yubico-piv-tool-${YKPIV_VERSION}" \
 	https://github.com/Yubico/yubico-piv-tool.git /usr/src/yubico-piv-tool \
 	&& ( \
