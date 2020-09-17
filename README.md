@@ -1,3 +1,14 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [ykpiv](#ykpiv)
+  - [C Libraries Required for Compilation](#c-libraries-required-for-compilation)
+  - [Example](#example)
+  - [Starting `pcscd`](#starting-pcscd)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # ykpiv
 
 [![make-all](https://github.com/jessfraz/ykpiv/workflows/make%20all/badge.svg)](https://github.com/jessfraz/ykpiv/actions?query=workflow%3A%22make+all%22)
