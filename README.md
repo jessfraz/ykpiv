@@ -1,6 +1,9 @@
 # ykpiv
 
-[![GoDoc](https://godoc.org/github.com/jessfraz/ykpiv?status.svg)](https://godoc.org/github.com/jessfraz/ykpiv) [![Travis CI](https://travis-ci.org/jessfraz/ykpiv.svg?branch=master)](https://travis-ci.org/jessfraz/ykpiv)
+[![make-all](https://github.com/jessfraz/ykpiv/workflows/make%20all/badge.svg)](https://github.com/jessfraz/ykpiv/actions?query=workflow%3A%22make+all%22)
+[![make-image](https://github.com/jessfraz/ykpiv/workflows/make%20image/badge.svg)](https://github.com/jessfraz/ykpiv/actions?query=workflow%3A%22make+image%22)
+[![make-test](https://github.com/jessfraz/ykpiv/workflows/make%20test/badge.svg)](https://github.com/jessfraz/ykpiv/actions?query=workflow%3A%22make+test%22)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-5272B4.svg?style=for-the-badge)](https://godoc.org/github.com/jessfraz/ykpiv)
 
 Go bindings for ykpiv so you can write Go to interact with your yubikeys.
 The C library lives at
